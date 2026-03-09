@@ -13,7 +13,7 @@ resource "random_string" "rand" {
  * a namespace that includes what we've received and concatenates random characters of the random string above up until 24 characters.
  */
 locals {
-	namespace = substr (join ("-", [ var.namespace, random_string.rand ]), 0, 24)
+	namespace = substr (join ("-", [ var.namespace, random_string.rand.result ]), 0, 24)
 }
 
 /**
