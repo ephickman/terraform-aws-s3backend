@@ -57,7 +57,7 @@ data "aws_iam_policy_document" "policy_doc" {
 /**
  * This is the policy with that allows the statements created above.
  */
-resouce "aws_iam_policy" "iam_policy" {
+resource "aws_iam_policy" "iam_policy" {
 	name   = "${local.namespace}-tf-policy"
 	path   = "/"
 	policy = data.aws_iam_policy_document.policy_doc.json

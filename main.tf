@@ -1,7 +1,7 @@
 data "aws_region" "current" {}
 
 /**
- * A random string of 24 characters so that we can generate truly unique names for the resouces.
+ * A random string of 24 characters so that we can generate truly unique names for the resources.
  */
 resource "random_string" "rand" {
 	length  = 24
@@ -49,7 +49,7 @@ resource "aws_s3_bucket" "s3_bucket" {
 	force_destroy = var.force_destroy_state
 	
 	versioning {
-		enabled : true
+		enabled = true
 	}
 	
 	server_side_encryption_configuration {
@@ -87,7 +87,7 @@ resource "aws_s3_bucket_public_access_block" "s3_bucket" {
  * A DynamoDB table to store the locks on the state files.
  * Setting "billing_mode" to "PAY_PER_REQUEST" creates a "serverless" database rather than a provisioned one.
  */
-resouce "aws_dynamodb_table" "dynamodb_table" {
+resource "aws_dynamodb_table" "dynamodb_table" {
 	name = "${local.namespace}-state-lock"
 	hash_key = "LockID"
 	billing_mode = "PAY_PER_REQUEST"
