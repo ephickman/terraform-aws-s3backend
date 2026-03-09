@@ -5,7 +5,7 @@ data "aws_caller_identity" "current" {}
  * executing Terraform.
  */
 locals {
-	principal_arns = var.principal_arns != null? var.principal_arns : [ aws_caller_identity.current.arn ]
+	principal_arns = var.principal_arns != null? var.principal_arns : [ data.aws_caller_identity.current.arn ]
 }
 
 /**
