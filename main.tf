@@ -19,7 +19,7 @@ locals {
 /**
  * An AWS Resource Group to have everything accessible by name.
  */
-resource "aws_resource_groups" "resourcegroup" {
+resource "aws_resourcegroups_group" "resourcegroup" {
 	name = "${local.namespace}-rgroup"
 	
 	resource_query {
